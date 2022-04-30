@@ -1,0 +1,45 @@
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered">Comsatel Basic ToDo</h1>
+  </section>
+  <div class="container add-todo-box-container">
+    <div class="add-todo-box">
+  
+      <form method="POST" [formGroup]="todoForm" (ngSubmit)="create()">
+        <h2 class="title is-5">Tareas</h2>
+  
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input id="description" name="description" required minlength="2" class="input" type="text" formControlName="description">
+          </p>
+          <p class="control">
+            <button type="submit" class="button alt-gradient-button">
+              <i class="material-icons">add</i>
+              Agregar
+            </button>
+          </p>
+        </div>
+        <div *ngIf="description.invalid && showValidationErrors">
+          <p class="help is-danger">La tarea no puede ser vacia</p>
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  
+  <section class="section">
+    <div class="container">
+  
+      <div class="todos-list">
+
+        <app-todo-item
+        *ngFor="let task of tasks | async"
+        [task]="task"
+        (todoClicked)="toggleCompleted(task)"
+        (editClicked)="editTask(task)"
+        (deleteClicked)="deleteTask(task)"
+      ></app-todo-item>
+
+      </div>
+  
+    </div>
+  </section>

@@ -1,0 +1,45 @@
+<h1 class="title">Editar tarea</h1>
+<div mat-dialog-content>
+    
+    <form method="POST" [formGroup]="updateForm" (ngSubmit)="update()">
+        <div class="field">
+            <div class="control">
+                <input
+                    [attr.disabled]="true"
+                    formControlName="id"
+                    type="hidden"
+                    class="input"
+                    [ngModel]="task.id"
+                    name="id"
+                    required>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input
+                    formControlName="description"
+                    type="text"
+                    class="input"
+                    [ngModel]="task.description"
+                    name="description"
+                    required>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-grouped-right">
+            <div class="control">
+                <button type="button" class="button is-light" (click)="close()">Cancelar</button>
+            </div>
+
+            <div class="control">
+                <button type="submit" class="button alt-gradient-button">
+                    <i class="material-icons">save</i>
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
